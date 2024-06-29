@@ -38,17 +38,12 @@ function NewProject({ onAdd }) {
       </menu>
       <div>
         <Input ref={titleRef} label="Title" isTextArea={false} type="text" />
-        <Input
-          ref={descriptionRef}
-          label="Description"
-          isTextArea={true}
-          type="text"
-        />
+        <Input ref={descriptionRef} label="Description" isTextArea={true} />
         <Input
           ref={dueDateRef}
           label="Due Date"
           isTextArea={false}
-          type="text"
+          type="date"
         />
       </div>
     </div>
