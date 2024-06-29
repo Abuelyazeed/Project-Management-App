@@ -1,8 +1,23 @@
+import { useState } from 'react';
+import ProjectsSideBar from './components/ProjectsSideBar';
+
 function App() {
+  const [projects, setProjects] = useState([
+    {
+      title: 'Learning React',
+      description: '',
+      dueDate: '',
+    },
+    {
+      title: 'Mastering React',
+      description: '',
+      dueDate: '',
+    },
+  ]);
   return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
-    </>
+    <main className="h-screen my-8 flex gap-8">
+      <ProjectsSideBar projects={projects} />
+    </main>
   );
 }
 
