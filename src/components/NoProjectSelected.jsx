@@ -1,5 +1,6 @@
 import React from 'react';
 import noProjectImage from '../assets/no-projects.png';
+import Button from './Button';
 
 function NoProjectSelected() {
   return (
@@ -16,9 +17,7 @@ function NoProjectSelected() {
         Select a project or get started with a new one
       </p>
       <p className="mt-8">
-        <button className="px-4 py-2 text-stone-400 bg-stone-700 rounded-md">
-          Create new project
-        </button>
+        <Button>Create new project</Button>
       </p>
     </div>
   );
