@@ -1,11 +1,15 @@
 import React from 'react';
 
 function Input({ isTextArea, label, ...props }) {
+  const classes =
+    'w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600';
   return (
-    <p>
-      <label>{label}</label>
-      {isTextArea && <textarea {...props} />}
-      {!isTextArea && <input {...props} />}
+    <p className="flex flex-col gap-1 my-4">
+      <label className="text-stone-500 uppercase font-bold text-sm">
+        {label}
+      </label>
+      {isTextArea && <textarea className={classes} {...props} />}
+      {!isTextArea && <input className={classes} {...props} />}
     </p>
   );
 }
