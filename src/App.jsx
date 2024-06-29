@@ -36,6 +36,7 @@ function App() {
         },
       ];
     });
+    setIsActive((prev) => !prev);
   }
 
   return (

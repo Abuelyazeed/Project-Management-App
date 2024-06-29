@@ -10,10 +10,10 @@ function ProjectsSideBar({ projects, onCreateProject }) {
       <div>
         <Button onClick={onCreateProject}>+ Add Project</Button>
       </div>
-      <ul className='"p-4 mt-8 rounded-md bg-stone-100"'>
+      <ul className="mt-8">
         {projects.map((p) => {
           return (
-            <li key={p.id} className="flex justify-between my-4">
+            <li key={p.id}>
               <button className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800">
                 {p.title}
               </button>
