@@ -39,13 +39,22 @@ function App() {
     setIsActive((prev) => !prev);
   }
 
+  function handleCancelAddProject() {
+    setIsActive((prev) => !prev);
+  }
+
   return (
     <main className="h-screen my-8 flex gap-8">
       <ProjectsSideBar
         projects={projects}
         onCreateProject={handleCreateProject}
       />
-      {isActive && <NewProject onAdd={handleAddProject} />}
+      {isActive && (
+        <NewProject
+          onAdd={handleAddProject}
+          onCancel={handleCancelAddProject}
+        />
+      )}
       {!isActive && <NoProjectSelected onCreateProject={handleCreateProject} />}
     </main>
   );
