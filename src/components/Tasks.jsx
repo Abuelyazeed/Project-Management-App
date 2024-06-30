@@ -1,4 +1,3 @@
-import React from 'react';
 import NewTask from './NewTask';
 
 function Tasks({ tasks, onAddTask, onDeleteTask }) {
