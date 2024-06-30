@@ -2,13 +2,15 @@ import { useState, useRef } from 'react';
 import ProjectsSideBar from './components/ProjectsSideBar';
 import NewProject from './components/NewProject';
 import NoProjectSelected from './components/NoProjectSelected';
+import SelectedProject from './components/SelectedProject';
 
 function App() {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState('noProject');
   const [projects, setProjects] = useState([
     {
       title: 'Learning React',
-      description: '',
+      description:
+        'Learn React from the group up. Start with the basics, finish with advanced knowledge.',
       dueDate: '',
       id: Math.random(),
     },
@@ -21,7 +23,7 @@ function App() {
   ]);
 
   function handleCreateProject() {
-    setIsActive(true);
+    setIsActive('createProject');
   }
 
   function handleAddProject(enteredData) {
@@ -36,11 +38,11 @@ function App() {
         },
       ];
     });
-    setIsActive((prev) => !prev);
+    setIsActive('noProject');
   }
 
   function handleCancelAddProject() {
-    setIsActive((prev) => !prev);
+    setIsActive('noProject');
   }
 
   return (
@@ -49,13 +51,16 @@ function App() {
         projects={projects}
         onCreateProject={handleCreateProject}
       />
-      {isActive && (
+      {isActive === 'createProject' && (
         <NewProject
           onAdd={handleAddProject}
           onCancel={handleCancelAddProject}
         />
       )}
-      {!isActive && <NoProjectSelected onCreateProject={handleCreateProject} />}
+      {isActive === 'noProject' && (
+        <NoProjectSelected onCreateProject={handleCreateProject} />
+      )}
+      {isActive === 'project' && <SelectedProject project={projects[0]} />}
     </main>
   );
 }
