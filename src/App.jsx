@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import ProjectsSideBar from './components/ProjectsSideBar';
 import NewProject from './components/NewProject';
 import NoProjectSelected from './components/NoProjectSelected';
@@ -23,7 +23,11 @@ function App() {
         id: Math.random(),
       },
     ],
+    tasks: [],
   });
+
+  function handleAddTask() {}
+  function handleDeleteTask() {}
 
   function handleSelectProject(id) {
     setProjectsState((prevProjectsState) => {
@@ -88,7 +92,12 @@ function App() {
   );
 
   let content = (
-    <SelectedProject project={selectedProject} onDelete={handleDeleteProject} />
+    <SelectedProject
+      project={selectedProject}
+      onDelete={handleDeleteProject}
+      onAddTask={handleAddTask}
+      onDeleteTask={handleDeleteTask}
+    />
   );
 
   if (projectsState.selectedProjectId === null) {

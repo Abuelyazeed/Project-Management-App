@@ -1,10 +1,30 @@
-import React from 'react';
+import { useState } from 'react';
 
-function NewTask() {
+function NewTask({ onAddTask, onDeleteTask }) {
+  const [enteredTask, setEnteredTask] = useState('');
+
+  function handleChange(e) {
+    setEnteredTask(e.target.value);
+  }
+
+  function handleClick() {
+    setEnteredTask('');
+  }
+
   return (
     <div className="flex items-center gap-4 mb-4">
-      <input className="w-64 px-2 py-1 rounded-sm bg-stone-200" type="text" />
-      <button className="text-stone-700 hover:text-stone-950">Add Task</button>
+      <input
+        className="w-64 px-2 py-1 rounded-sm bg-stone-200"
+        type="text"
+        onChange={handleChange}
+        value={enteredTask}
+      />
+      <button
+        className="text-stone-700 hover:text-stone-950"
+        onClick={handleClick}
+      >
+        Add Task
+      </button>
     </div>
   );
 }

@@ -25,10 +25,6 @@ function NewProject({ onAdd, onCancel }) {
       return;
     }
     onAdd(enteredData);
-
-    titleRef.current.value = '';
-    descriptionRef.current.value = '';
-    dueDateRef.current.value = '';
   }
 
   return (
