@@ -90,6 +90,7 @@ function App() {
         projects={projectsState.projects}
         onCreateProject={handleCreateProject}
         onSelectProject={handleSelectProject}
+        selectedProjectId={selectedProject != undefined && selectedProject.id}
       />
       {content}
     </main>
