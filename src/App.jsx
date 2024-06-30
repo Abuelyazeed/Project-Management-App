@@ -133,7 +133,7 @@ function App() {
         projects={projectsState.projects}
         onCreateProject={handleCreateProject}
         onSelectProject={handleSelectProject}
-        selectedProjectId={selectedProject != undefined && selectedProject.id}
+        selectedProjectId={projectsState.selectedProjectId}
       />
       {content}
     </main>
