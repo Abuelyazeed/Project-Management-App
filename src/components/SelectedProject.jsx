@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './Input';
+import Tasks from './Tasks';
 
 function SelectedProject({ project, onDelete }) {
   const formattedDate = new Date(project.dueDate).toLocaleDateString('en-US', {
@@ -26,15 +27,7 @@ function SelectedProject({ project, onDelete }) {
           {project.description}
         </p>
       </header>
-
-      <h2 className="text-2xl font-bold text-stone-700 mb-4">Tasks</h2>
-      <p className="flex gap-4 mb-4">
-        <input className="w-64 px-2 py-1 rounded-sm bg-stone-200" />
-        <button className="text-stone-700 hover:text-stone-950">
-          Add Task
-        </button>
-      </p>
-      <p>This project does not have any tasks</p>
+      <Tasks />
     </div>
   );
 }
