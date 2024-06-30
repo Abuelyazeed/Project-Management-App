@@ -26,7 +26,19 @@ function App() {
     tasks: [],
   });
 
-  function handleAddTask() {}
+  function handleAddTask(text) {
+    setProjectsState((prevProjectsState) => {
+      const newTask = {
+        task: text,
+        projectId: prevProjectsState.selectedProjectId,
+        id: Math.random(),
+      };
+      return {
+        ...prevProjectsState,
+        tasks: [newTask, ...prevProjectsState.tasks],
+      };
+    });
+  }
   function handleDeleteTask() {}
 
   function handleSelectProject(id) {
@@ -49,18 +61,16 @@ function App() {
 
   function handleAddProject(enteredData) {
     setProjectsState((prevProjectsState) => {
+      const newProject = {
+        title: enteredData.title,
+        description: enteredData.description,
+        dueDate: enteredData.dueDate,
+        id: Math.random(),
+      };
       return {
         ...prevProjectsState,
         selectedProjectId: undefined,
-        projects: [
-          ...prevProjectsState.projects,
-          {
-            title: enteredData.title,
-            description: enteredData.description,
-            dueDate: enteredData.dueDate,
-            id: Math.random(),
-          },
-        ],
+        projects: [...prevProjectsState.projects, newProject],
       };
     });
   }

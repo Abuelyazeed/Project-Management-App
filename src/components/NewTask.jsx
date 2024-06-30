@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function NewTask({ onAddTask, onDeleteTask }) {
+function NewTask({ onAddTask }) {
   const [enteredTask, setEnteredTask] = useState('');
 
   function handleChange(e) {
@@ -8,6 +8,7 @@ function NewTask({ onAddTask, onDeleteTask }) {
   }
 
   function handleClick() {
+    onAddTask(enteredTask);
     setEnteredTask('');
   }
 
