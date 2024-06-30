@@ -62,7 +62,6 @@ function App() {
   }
 
   function handleCancelAddProject() {
-    setIsActive('noProject');
     setProjectsState((prevProjectsState) => {
       return {
         ...prevProjectsState,
@@ -88,7 +87,7 @@ function App() {
   return (
     <main className="h-screen my-8 flex gap-8">
       <ProjectsSideBar
-        projects={projects}
+        projects={projectsState.projects}
         onCreateProject={handleCreateProject}
         onSelectProject={handleSelectProject}
       />
