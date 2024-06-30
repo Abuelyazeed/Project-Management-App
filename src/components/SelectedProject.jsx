@@ -16,7 +16,7 @@ function SelectedProject({ project, onDelete }) {
           </h1>
           <button
             className="text-stone-600 hover:text-stone-950"
-            onClick={() => onDelete(project.id)}
+            onClick={onDelete}
           >
             Delete
           </button>

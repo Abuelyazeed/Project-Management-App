@@ -26,9 +26,9 @@ function App() {
   });
 
   function handleSelectProject(id) {
-    setProjectsState((prevprojectsState) => {
+    setProjectsState((prevProjectsState) => {
       return {
-        ...projectsState,
+        ...prevProjectsState,
         selectedProjectId: id,
       };
     });
@@ -70,8 +70,10 @@ function App() {
     });
   }
 
-  function handleDeleteProject(id) {
-    const updatedProjects = projectsState.projects.filter((p) => p.id != id);
+  function handleDeleteProject() {
+    const updatedProjects = projectsState.projects.filter(
+      (p) => p.id !== projectsState.selectedProjectId
+    );
     setProjectsState((prevprojectsState) => {
       return {
         ...prevprojectsState,
