@@ -2,7 +2,10 @@ import React from 'react';
 import Input from './Input';
 
 function SelectedProject({ project }) {
-  const formattedDate = project.dueDate;
+  const formattedDate = new Date(project.dueDate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+  });
   return (
     <div className="w-[35rem] pt-16">
       <header>

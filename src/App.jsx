@@ -11,16 +11,18 @@ function App() {
       title: 'Learning React',
       description:
         'Learn React from the group up. Start with the basics, finish with advanced knowledge.',
-      dueDate: '',
+      dueDate: '2024-06-13',
       id: Math.random(),
     },
     {
       title: 'Mastering React',
-      description: '',
-      dueDate: '',
+      description:
+        'Learn React from the group up. Start with the basics, finish with advanced knowledge.',
+      dueDate: '2024-06-13',
       id: Math.random(),
     },
   ]);
+  const [selectedProject, setSelectedProject] = useState(projects[0]);
 
   function handleCreateProject() {
     setIsActive('createProject');
@@ -45,11 +47,17 @@ function App() {
     setIsActive('noProject');
   }
 
+  function handleSelectProject(id) {
+    setIsActive('project');
+    setSelectedProject(projects.find((p) => p.id === id));
+  }
+
   return (
     <main className="h-screen my-8 flex gap-8">
       <ProjectsSideBar
         projects={projects}
         onCreateProject={handleCreateProject}
+        onSelectProject={handleSelectProject}
       />
       {isActive === 'createProject' && (
         <NewProject
@@ -60,7 +68,7 @@ function App() {
       {isActive === 'noProject' && (
         <NoProjectSelected onCreateProject={handleCreateProject} />
       )}
-      {isActive === 'project' && <SelectedProject project={projects[0]} />}
+      {isActive === 'project' && <SelectedProject project={selectedProject} />}
     </main>
   );
 }
