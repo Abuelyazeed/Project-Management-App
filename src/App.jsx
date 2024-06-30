@@ -5,51 +5,84 @@ import NoProjectSelected from './components/NoProjectSelected';
 import SelectedProject from './components/SelectedProject';
 
 function App() {
-  const [isActive, setIsActive] = useState('noProject');
-  const [projects, setProjects] = useState([
-    {
-      title: 'Learning React',
-      description:
-        'Learn React from the group up. Start with the basics, finish with advanced knowledge.',
-      dueDate: '2024-06-13',
-      id: Math.random(),
-    },
-    {
-      title: 'Mastering React',
-      description:
-        'Learn React from the group up. Start with the basics, finish with advanced knowledge.',
-      dueDate: '2024-06-13',
-      id: Math.random(),
-    },
-  ]);
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
+  const [projectsState, setProjectsState] = useState({
+    selectedProject: undefined,
+    projects: [
+      {
+        title: 'Learning React',
+        description:
+          'Learn React from the group up. Start with the basics, finish with advanced knowledge.',
+        dueDate: '2024-06-13',
+        id: Math.random(),
+      },
+      {
+        title: 'Mastering React',
+        description:
+          'Learn React from the group up. Start with the basics, finish with advanced knowledge.',
+        dueDate: '2024-06-13',
+        id: Math.random(),
+      },
+    ],
+  });
+
+  function handleSelectProject(id) {
+    setProjectsState((prevprojectsState) => {
+      return {
+        ...projectsState,
+        selectedProject: id,
+      };
+    });
+  }
 
   function handleCreateProject() {
-    setIsActive('createProject');
+    setProjectsState((prevProjectsState) => {
+      return {
+        ...prevProjectsState,
+        selectedProject: null,
+      };
+    });
   }
 
   function handleAddProject(enteredData) {
-    setProjects((prevProjects) => {
-      return [
-        ...prevProjects,
-        {
-          title: enteredData.title,
-          description: enteredData.description,
-          dueDate: enteredData.dueDate,
-          id: Math.random(),
-        },
-      ];
+    setProjectsState((prevProjectsState) => {
+      return {
+        ...prevProjectsState,
+        selectedProject: undefined,
+        projects: [
+          ...prevProjectsState.projects,
+          {
+            title: enteredData.title,
+            description: enteredData.description,
+            dueDate: enteredData.dueDate,
+            id: Math.random(),
+          },
+        ],
+      };
     });
-    setIsActive('noProject');
   }
 
   function handleCancelAddProject() {
     setIsActive('noProject');
+    setProjectsState((prevProjectsState) => {
+      return {
+        ...prevProjectsState,
+        selectedProject: undefined,
+      };
+    });
   }
 
-  function handleSelectProject(id) {
-    setIsActive('project');
-    setSelectedProject(projects.find((p) => p.id === id));
+  const selectedProject = projectsState.projects.find(
+    (p) => p.id === projectsState.selectedProject
+  );
+
+  let content = <SelectedProject project={selectedProject} />;
+
+  if (projectsState.selectedProject === null) {
+    content = (
+      <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject} />
+    );
+  } else if (projectsState.selectedProject === undefined) {
+    content = <NoProjectSelected onCreateProject={handleCreateProject} />;
   }
 
   return (
@@ -59,16 +92,7 @@ function App() {
         onCreateProject={handleCreateProject}
         onSelectProject={handleSelectProject}
       />
-      {isActive === 'createProject' && (
-        <NewProject
-          onAdd={handleAddProject}
-          onCancel={handleCancelAddProject}
-        />
-      )}
-      {isActive === 'noProject' && (
-        <NoProjectSelected onCreateProject={handleCreateProject} />
-      )}
-      {isActive === 'project' && <SelectedProject project={selectedProject} />}
+      {content}
     </main>
   );
 }
