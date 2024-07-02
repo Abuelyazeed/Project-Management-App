@@ -18,7 +18,7 @@ The Project Management App is a web application built using ReactJS. It allows u
 
 ## Website
 
-Visit the [Project Management App](https://your-website-link.com) online.
+Visit the [Project Management App]([https://your-website-link.com](https://project-manager-715.netlify.app/)) online.
 
 ## Installation
 
@@ -40,15 +40,6 @@ To run the Project Management App locally, follow these steps:
 - **Deleting Projects**: Click on the delete icon next to the project to remove it.
 
 
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request with your proposed changes.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
-## Acknowledgments
-
-- Mention any libraries or resources that significantly contributed to the project.
-- You may also acknowledge any mentors, colleagues, or resources that helped you during development.
