@@ -18,7 +18,7 @@ The Project Management App is a web application built using ReactJS. It allows u
 
 ## Website
 
-Visit the [Project Management App]([https://your-website-link.com](https://project-manager-715.netlify.app/) online.
+Visit the [Project Management App](https://project-manager-715.netlify.app/) online.
 
 ## Installation
 
